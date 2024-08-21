@@ -59,4 +59,20 @@ class PF(user):
 
 #CLASSE PESSOA JURIDICA
 class PJ(user):
-    pass
+    def init(self, name="", performance=0, address=None, cnpj='', lucro = 0):
+        if address is None:
+            address = Address
+
+        super().init(name, performance, address)
+
+        #Atributos PJ
+        self.cnpj = cnpj
+        self.lucro = lucro
+
+        # Calculando imposto
+    def calcular_impostoPJ(self, perfomance, lucro):
+        if lucro > 2000: 
+            return (perfomance * 0.15) + (perfomance * 0.1)
+        else: 
+            return (perfomance * 0.15)
+
